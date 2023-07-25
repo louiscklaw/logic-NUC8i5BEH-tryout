@@ -1,5 +1,3 @@
-version: '3.4'
-
 services:
   whoami1:
     image: 'traefik/whoami'
