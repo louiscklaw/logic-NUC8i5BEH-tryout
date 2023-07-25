@@ -1,6 +1,6 @@
 services:
   whoami1:
-    image: 'traefik/whoami'
+    image: 192.168.10.61:5000/traefik/whoami
     restart: unless-stopped
     container_name: 'whoami_helloworld1'
     # labels:
@@ -10,7 +10,7 @@ services:
     #   - "traefik.http.routers.whoami_root.tls.certresolver=myresolver"
 
   db:
-    image: mysql
+    image: 192.168.10.61:5000/mysql
     restart: unless-stopped
     # container_name: Monica-DB
     user: '1000'
