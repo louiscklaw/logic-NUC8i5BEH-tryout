@@ -1,0 +1,21 @@
+{
+  "name": "logic-nuc8i5beh-tryout",
+  "version": "1.0.0",
+  "description": "logic-NUC8i5BEH workspace",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gitUpdate": "git add . && git commit -m\"misc update,\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louiscklaw/logic-NUC8i5BEH-tryout.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/louiscklaw/logic-NUC8i5BEH-tryout/issues"
+  },
+  "homepage": "https://github.com/louiscklaw/logic-NUC8i5BEH-tryout#readme"
+}
