@@ -1,5 +1,5 @@
 services:
-  web:
+  v2raya-gateway:
     image: mzz2017/v2raya
     restart: unless-stopped
     privileged: true
