@@ -1,0 +1,13 @@
+{
+  "name": "docker-changedetection-tryout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker_rebuild": "docker compose up -d",
+    "gitUpdate": "git add . && git commit -m\"update docker-changedetection-tryout,\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

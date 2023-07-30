@@ -1,0 +1,57 @@
+# https://docs.browserless.io/docs/docker.html#function-incognito-mode
+
+services:
+  private-changedetect-playwright:
+    image: browserless/chrome
+    restart: always
+    
+    shm_size: 2gb
+    volumes:
+      - /dev/shm/private-changedetect-playwright:/dev/shm
+    ports:
+      - 3000
+      
+    environment:
+      - EXIT_ON_HEALTH_FAILURE=true
+      # means how many client can connect to this browserless machine
+      - MAX_CONCURRENT_SESSIONS=5
+      - MAX_QUEUE_LENGTH=99999
+      - CONNECTION_TIMEOUT=30000
+      - DEFAULT_IGNORE_HTTPS_ERRORS=true
+      - ENABLE_CORS=true
+      - PREBOOT_CHROME=true
+      - KEEP_ALIVE=false
+      - ENABLE_API_GET=true
+      - DEFAULT_LAUNCH_ARGS=["--window-size=1920,5080"]
+      - FUNCTION_ENABLE_INCOGNITO_MODE=true
+      - METRICS_JSON_PATH=/root/metrics.json
+      # This will have browserless delete files older than 30 days in the workspace, checking once a day
+      - WORKSPACE_DELETE_EXPIRED=true
+
+  private-changedetect:
+    image: logickee/changedetect
+    container_name: private-changedetect
+    hostname: private-changedetect
+    user: 1000:1000
+    volumes:
+      - ./volumes/private-changedetect/datastore:/datastore
+    environment:
+      - FETCH_WORKERS=5
+      - PORT=5000
+      - PUID=1000
+      - PGID=1000
+      - PLAYWRIGHT_DRIVER_URL=ws://private-changedetect-playwright:3000/
+    ports:
+      - 5001:5000
+    restart: always
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.changedetect-iamon99-http.rule=Host(`changedetect.iamon99.com`)"
+    #   - "traefik.http.routers.changedetect-iamon99-http.entrypoints=web"
+    #   - "traefik.http.services.changedetect-iamon99-http.loadbalancer.server.port=5000"
+
+
+networks:
+  default:
+    external:
+      name: traefik-proxy-network
