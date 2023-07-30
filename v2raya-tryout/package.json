@@ -1,0 +1,15 @@
+{
+  "name": "v2raya-tryout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker_rebuild": "docker compose up -d",
+    "docker_stop": "docker compose down",
+    "gitUpdate": "git add . && git commit -m\"update v2ray-tryout,\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
