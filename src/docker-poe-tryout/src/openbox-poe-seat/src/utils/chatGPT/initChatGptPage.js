@@ -5,26 +5,29 @@ async function initChatGptPage(page) {
   let output = { state: 'init', debug: {}, error: '' };
 
   try {
-    await page.evaluate(() => {
+    await page.goto('https://poe.com/ChatGPT');
+    let clear_local_storage_result = await page.evaluate(() => {
       try {
         localStorage.clear();
-      } catch (error) {}
+        localStorage.setItem('cleared', 'helloworld');
+        sessionStorage.clear();
+        sessionStorage.setItem('cleared', 'helloworld');
+        return 'done';
+      } catch (error) {
+        return 'error';
+      }
     });
-    await page.goto('https://poe.com/ChatGPT');
 
-    await page.evaluate(() => {
-      localStorage.clear();
-      localStorage.setItem('cleared', 'helloworld');
-      sessionStorage.clear();
-      sessionStorage.setItem('cleared', 'helloworld');
-    });
+    console.log({ clear_local_storage_result });
 
     output = { ...output, state: DONE };
-    return 'init ChatGPT page';
+
+    return output;
   } catch (error) {
     output = { ...output, state: ERROR, error };
     myLogger.error(JSON.stringify(output));
-    return 'error during init ChatGPT page';
+
+    return output;
   }
 }
 
