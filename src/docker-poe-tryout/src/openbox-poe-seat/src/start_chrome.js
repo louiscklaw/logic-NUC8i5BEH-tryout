@@ -1,14 +1,26 @@
+const { DEFAULT_DATA_DIR } = require('./config');
 const { initBrowser } = require('./utils/initBrowser');
 
-console.log('start chrome js');
+const { myLogger } = require('./utils/myLogger');
+
+let data_dir = process.argv[2];
 
 (async () => {
+  console.log('start chrome js');
+  if (data_dir == undefined) {
+    data_dir = DEFAULT_DATA_DIR;
+  }
+
   try {
-    const browser = await initBrowser();
+    console.log('data_dir: ' + data_dir);
+    const browser = await initBrowser(data_dir);
     const page = (await browser.pages())[0];
 
     await page.waitForTimeout(9999 * 1000);
+
+    await page.close();
+    await browser.close();
   } catch (error) {
-    console.log(error);
+    myLogger.error(JSON.stringify(error));
   }
 })();
