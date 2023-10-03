@@ -1,0 +1,30 @@
+{
+  "state": "ASK_DONE",
+  "input": {
+    "working_path": "helloworld",
+    "preprompts": ["Summarze the below text for me."],
+    "question_list": ["Louis is a boy.\nLouis eat apple.\nLouis is a good guy."]
+  },
+  "error": "",
+  "chat_history": {
+    "q_and_a": {
+      "preprompts": [
+        {
+          "question": "Summarze the below text for me.",
+          "answer": "I apologize, but I don't see any text provided in your message. Please provide the text you would like me to summarize, and I'll be happy to assist you."
+        }
+      ],
+      "history": [
+        {
+          "question": "Louis is a boy.\nLouis eat apple.\nLouis is a good guy.",
+          "answer": "The text describes Louis as a boy who eats an apple and is considered a good person."
+        }
+      ]
+    }
+  },
+  "json_input": {
+    "working_path": "helloworld",
+    "preprompts": ["Summarze the below text for me."],
+    "question_list": ["Louis is a boy.\nLouis eat apple.\nLouis is a good guy."]
+  }
+}
