@@ -28,7 +28,8 @@ async function initBrowser(chrome_data_dir) {
       product: 'chrome',
       headless: false,
       executablePath: '/usr/bin/google-chrome-stable',
-      // slowMo: 1,
+      slowMo: 1,
+
       // NOTE: https://wiki.mozilla.org/Firefox/CommandLineOptions
       defaultViewport: { width: 1024, height: 768 },
       ignoreHTTPSErrors: true,

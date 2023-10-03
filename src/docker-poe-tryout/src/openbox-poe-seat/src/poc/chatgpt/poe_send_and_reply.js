@@ -1,11 +1,11 @@
+require('dotenv').config();
 const puppeteer = require('puppeteer-core');
+
 // const chalk = require('chalk');
-const { SRC_ROOT, UTILS_ROOT } = require('../../config.js');
+// const { SRC_ROOT, UTILS_ROOT } = require('../../config.js');
 const { newChat, appendChat } = require('../../utils/chatHistory.js');
 
 var assert = require('chai').assert;
-
-require('dotenv').config();
 
 const { FIREFOX_DATA_DIR } = process.env;
 
@@ -15,7 +15,7 @@ const {
   clearChatHistory,
   clearModalBox,
   questionAndAnswer,
-} = require(`${UTILS_ROOT}/chatGPT`);
+} = require(`../../utils/chatGPT`);
 
 // start
 (async () => {
@@ -28,7 +28,7 @@ const {
     headless: false,
     executablePath: '/usr/bin/firefox',
     userDataDir: FIREFOX_DATA_DIR,
- //   slowMo: 1,
+    slowMo: 1,
     // NOTE: https://wiki.mozilla.org/Firefox/CommandLineOptions
     defaultViewport: { width: 1024, height: 768 },
     ignoreHTTPSErrors: true,

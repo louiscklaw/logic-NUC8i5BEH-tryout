@@ -1,5 +1,5 @@
 const { myLogger } = require('./myLogger');
-const fs = require('fs')
+const fs = require('fs');
 
 async function questionAndAnswerWithMd(page, question, answer_idx) {
   try {
@@ -109,15 +109,13 @@ async function questionAndAnswerWithMd(page, question, answer_idx) {
     return result;
   } catch (error) {
     myLogger.error('error during questionAndAnswerWithMd');
-    
-    console.log({question})
 
-    await fs.writeFileSync(
-      '/share/testing/questionAndAnswerWithMd.json',
-      JSON.stringify({question}),
-      {encoding:'utf8'}
-    )
-    
+    console.log({ question });
+
+    await fs.writeFileSync('/share/testing/questionAndAnswerWithMd.json', JSON.stringify({ question }), {
+      encoding: 'utf8',
+    });
+
     throw error;
   }
 }

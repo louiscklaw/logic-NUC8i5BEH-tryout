@@ -16,6 +16,14 @@ let data_dir = process.argv[2];
     const browser = await initBrowser(data_dir);
     const page = (await browser.pages())[0];
 
+    await page.goto('http://poe.com/chatgpt');
+    await page.evaluate(() => {
+      localStorage.clear();
+      localStorage.setItem('cleared', 'helloworld');
+      sessionStorage.clear();
+      sessionStorage.setItem('cleared', 'helloworld');
+    });
+
     await page.waitForTimeout(9999 * 1000);
 
     await page.close();

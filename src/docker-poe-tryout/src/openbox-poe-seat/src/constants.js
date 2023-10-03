@@ -1,16 +1,16 @@
 'use strict';
 
 const ASK_DONE = 'ASK_DONE';
-const NO_QUESTION_FOUND = 'no question found';
-const QUESTION_LIST_NOT_FOUND = 'question list not found';
-const ASK_INIT = 'ASK_INIT';
-
-const DONE = 'DONE';
-const ERROR = 'ERROR';
+const NO_QUESTION_FOUND = 'abounded, no question found';
+const QUESTION_LIST_NOT_FOUND = 'abounded, question list not found';
+const ASK_INIT = 'ask_init';
 
 const BROWSER_STEALTH_CHECK_OK = 'BROWSER_STEALTH_CHECK_OK';
 const BROWSER_STEALTH_CHECK_FAIL = 'BROWSER_STEALTH_CHECK_FAIL';
 const BROWSER_STEALTH_CHECK_INIT = 'BROWSER_STEALTH_CHECK_INIT';
+
+const DONE = 'DONE';
+const ERROR = 'ERROR';
 
 module.exports = {
   ASK_DONE,

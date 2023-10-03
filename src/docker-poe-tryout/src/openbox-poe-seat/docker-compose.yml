@@ -7,7 +7,7 @@ services:
     # TODO ? do i need this ?
     container_name: openbox-poe-seat1
 
-    shm_size: "1gb"
+    shm_size: '1gb'
     ports:
       - 6081:6080
       - 3021:3000
@@ -22,12 +22,12 @@ services:
 
       # NOTE: share chrome user profile
       - ./volumes/openbox-poe-seat1/chrome-user-data:/workspace/chrome-user-data
-      
+
       # NOTE: store output
       - ./volumes/static-share/_output:/share
 
       # NOTE: source code
-      - "./openbox-poe-seat/src:/app"
+      - './openbox-poe-seat/src:/app'
 
       - ./volumes/logs:/logs
     env_file: ./.env
@@ -36,7 +36,7 @@ services:
       - FIREFOX_DATA_DIR=/workspace/firefox-user-data
       - CHROME_DATA_DIR=/workspace/chrome-user-data
       - CANONICAL_HOSTNAME=openbox-poe-seat1
-      
+
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:3000/healthcheck']
       interval: 10s
@@ -46,9 +46,9 @@ services:
     deploy:
       resources:
         limits:
-          cpus: "0.7"
+          cpus: '0.7'
         reservations:
-          cpus: "0.01"
+          cpus: '0.01'
 
   # openbox-firefox:
   #   image: openbox-poe-seat
@@ -66,7 +66,7 @@ services:
 
   #     # NOTE: share chrome user profile
   #     - ./volumes/openbox-firefox/chrome-user-data:/share/chrome-user-data
-      
+
   #     # NOTE: store output
   #     - ./volumes/static-share/_output:/share
 

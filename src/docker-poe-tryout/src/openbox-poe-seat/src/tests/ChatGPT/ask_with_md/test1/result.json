@@ -1,9 +1,7 @@
 {
   "state": "ASK_DONE",
   "input": {
-    "question_list": [
-      "draft me a \"#\" exampe in markdown, just show the markdown content is OK."
-    ]
+    "question_list": ["draft me a \"#\" exampe in markdown, just show the markdown content is OK."]
   },
   "error": "",
   "chat_history": {
@@ -23,8 +21,6 @@
     }
   },
   "json_input": {
-    "question_list": [
-      "draft me a \"#\" exampe in markdown, just show the markdown content is OK."
-    ]
+    "question_list": ["draft me a \"#\" exampe in markdown, just show the markdown content is OK."]
   }
 }

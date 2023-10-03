@@ -16,8 +16,7 @@ const { DONE, ERROR, ASK_INIT, ASK_DONE, NO_QUESTION_FOUND, QUESTION_LIST_NOT_FO
 const { chatGPTSolverAndParseMarkdown } = require('../../worker/poe/chatGPTSolverAndParseMarkdown');
 // const { chatGPTSolverAndParseMarkdown } = require(`${WORKER_ROOT}/poe/chatGPT/chatGPTSolverAndParseMarkdown`);
 
-
-module.exports = (router) =>{
+module.exports = router => {
   router.post('/ask_with_md', async (req, res) => {
     var json_input = req.body;
     var output = {
@@ -26,24 +25,24 @@ module.exports = (router) =>{
       error: '',
       chat_history: { q_and_a: { preprompts: [], history: [] } },
     };
-  
+
     try {
-      console.log(json_input)
-      
+      console.log(json_input);
+
       checkInput(json_input);
-  
+
       var { question_list, preprompts } = json_input;
       // res.send(question_list)
       // TODO: check using schema
-      
+
       if (!question_list) throw new Error(QUESTION_LIST_NOT_FOUND);
       if (question_list?.length < 1) throw new Error(NO_QUESTION_FOUND);
       // NOTE: question list valid after this line
-  
+
       var temp_history = await chatGPTSolverAndParseMarkdown(question_list, preprompts);
       var { state, preprompts, history } = temp_history;
       if (state != 'done') throw new Error('error during ask ChatGPT');
-  
+
       output = {
         ...output,
         state: ASK_DONE,
@@ -59,7 +58,7 @@ module.exports = (router) =>{
       console.log(error);
       throw error;
     }
-  
+
     res.send(output);
   });
 };

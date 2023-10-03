@@ -5,14 +5,16 @@ var assert = require('chai').assert;
 async function botCooldown(time_s, page) {
   await page.waitForTimeout(time_s * 1000);
 }
-
-async function initChatGptPage(page) {
-  await page.goto('https://poe.com/ChatGPT');
-  return 'init ChatGPT page';
-}
+// TODO: remove me
+// async function initChatGptPage(page) {
+//   await page.goto('https://poe.com/ChatGPT');
+//   return 'init ChatGPT page';
+// }
+// TODO: remove me
 
 // https://www.cointracker.io/
 // https://www.g2.com/products/asana/reviews
+
 async function tackleCloudflare(page) {
   // await page.goto('https://www.cointracker.io', {
   //   //wait for website to load
@@ -115,7 +117,7 @@ async function questionAndAnswer(page, question, answer_idx) {
       var new_answer_bubble_length = await countAnswerBubble(page);
       if (new_answer_bubble_length > current_answer_bubble_length) {
         // NOTE: new answer bubble appear
-        myLogger.info('wait for new answer bubble appear')
+        myLogger.info('wait for new answer bubble appear');
         break;
       } else {
         // NOTE: no new answer bubble appear, keep waiting
@@ -142,7 +144,7 @@ async function questionAndAnswer(page, question, answer_idx) {
     for (var countdown = 9999; countdown > 0; countdown--) {
       var result_json = await page.evaluate(() => {
         try {
-          var last_bubble_idx = document.querySelectorAll('[class*="Message_botMessageBubble__"]').length - 1
+          var last_bubble_idx = document.querySelectorAll('[class*="Message_botMessageBubble__"]').length - 1;
           var ele = document.querySelectorAll('[class*="Message_botMessageBubble__"]').item(last_bubble_idx);
           return JSON.stringify({
             answer: ele.textContent,
@@ -200,7 +202,7 @@ async function questionAndAnswer(page, question, answer_idx) {
 function assertKeyWord(to_check, keyword_wanted) {
   return assert(
     to_check.toLowerCase().indexOf(keyword_wanted) >= -1,
-    `reply failed -> no "${keyword_wanted}", 
+    `reply failed -> no "${keyword_wanted}",
     to_check:${to_check}`,
   );
 }
@@ -210,26 +212,25 @@ function helloworld(test_call = '') {
   myLogger.info('chatGPT.js (obsoleted): helloworld');
 }
 
-async function checkLoginState(page) {
-  try {
-    myLogger.info('chatGPT.js (obsoleted): checkLoginState');
+// async function checkLoginState(page) {
+//   try {
+//     myLogger.info('chatGPT.js (obsoleted): checkLoginState');
 
-    const selector = 'textarea[placeholder="Talk to ChatGPT on Poe"]';
-    await page.waitForSelector(selector);
-    await page.waitForTimeout(1 * 1000);
-  } catch (error) {
-    // myLogger.info('chatGPT.js (obsoleted): gpt input box not found, check if logged out')
-    throw new Error('gpt input box not found, check if logged out');
-  }
-}
+//     const selector = 'textarea[placeholder="Talk to ChatGPT on Poe"]';
+//     await page.waitForSelector(selector);
+//     await page.waitForTimeout(1 * 1000);
+//   } catch (error) {
+//     // myLogger.info('chatGPT.js (obsoleted): gpt input box not found, check if logged out')
+//     throw new Error('gpt input box not found, check if logged out');
+//   }
+// }
 
 module.exports = {
   helloworld,
   tackleCloudflare,
-  initChatGptPage,
   clearChatHistory,
   clearModalBox,
   questionAndAnswer,
   assertKeyWord,
-  checkLoginState,
+  // checkLoginState,
 };

@@ -6,7 +6,7 @@ require('dotenv').config();
 const { FIREFOX_DATA_DIR } = process.env;
 
 const { SRC_ROOT, UTILS_ROOT } = require('../../../../../config');
-const { newChat, appendChat } = require(`${UTILS_ROOT}/chatHistory`);
+const { newChat, appendChat } = require(`../../../../../utils/chatHistory`);
 
 const {
   helloworld,

@@ -9,15 +9,20 @@ var poe_seat_down_message = host => {
 };
 
 async function poeSendAlert(content_o) {
-  const response = await fetch('http://page-handler:3000/post-telegram-alert', {
-    method: 'post',
-    body: JSON.stringify(content_o),
-    headers: { 'content-type': 'application/json' },
-  });
+  let response;
+  let output = { state: 'init', debug: {}, error: {} };
 
   try {
+    myLogger.info('poeSendAlert start');
+
+    response = await fetch('http://page-handler:3000/post-telegram-alert', {
+      method: 'post',
+      body: JSON.stringify(content_o),
+      headers: { 'content-type': 'application/json' },
+    });
+
     const res_json = await response.json();
-    myLogger.info('%o', { res_json });
+    myLogger.info('poeSendAlert done');
   } catch (error) {
     const res_text = await response.text();
     myLogger.info(res_text);

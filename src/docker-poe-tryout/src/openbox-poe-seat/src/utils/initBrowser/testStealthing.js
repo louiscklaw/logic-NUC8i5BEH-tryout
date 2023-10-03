@@ -13,7 +13,7 @@ async function testStealthing(page) {
     assert(webdriver_result == 'missing (passed)', 'webdriver should be missing !');
     assert(chrome_result == 'present (passed)', 'should present !');
 
-    await page.goto('http://openbox-poe-seat-stub:8080/navigator_webdriver_test.html', { waitUntil: 'load' });
+    await page.goto('http://bait:8080/navigator_webdriver_test.html', { waitUntil: 'load' });
     webdriver_result = await page.evaluate(() => {
       return document.querySelector('#webdriver-result').textContent;
     });

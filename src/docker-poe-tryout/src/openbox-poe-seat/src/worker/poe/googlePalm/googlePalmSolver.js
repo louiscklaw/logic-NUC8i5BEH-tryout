@@ -8,9 +8,13 @@ puppeteer.use(AdblockerPlugin({ blockTrackers: true }));
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 
-const { initGooglePaLMPage, clearChatHistory, clearModalBox, questionAndAnswer, assertKeyWord } = require(
-  `../../../utils/googlePalm`,
-);
+const {
+  initGooglePaLMPage,
+  clearChatHistory,
+  clearModalBox,
+  questionAndAnswer,
+  assertKeyWord,
+} = require(`../../../utils/googlePalm`);
 const { DEFAULT_ASK_ACCOUNT } = require('../../../config');
 const { myLogger } = require('../../../utils/myLogger');
 const { initBrowser } = require('../../../utils/initBrowser');

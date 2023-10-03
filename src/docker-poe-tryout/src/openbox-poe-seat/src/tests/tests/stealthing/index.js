@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 // const puppeteer = require('puppeteer-core');
 const puppeteer = require('puppeteer-extra');
 
@@ -9,11 +11,11 @@ puppeteer.use(StealthPlugin());
 
 // const chalk = require('chalk');
 const { SRC_ROOT, UTILS_ROOT } = require('../../../config');
-const { newChat, appendChat } = require(`${UTILS_ROOT}/chatHistory.js`);
+const { newChat, appendChat } = require(`../../../utils/chatHistory.js`);
 
 var assert = require('chai').assert;
 
-require('dotenv').config();
+//　require('dotenv').config();
 
 const { FIREFOX_DATA_DIR } = process.env;
 
@@ -24,7 +26,7 @@ const {
   clearModalBox,
   questionAndAnswer,
   tackleCloudflare,
-} = require(`${UTILS_ROOT}/chatGPT`);
+} = require(`../../../utils/chatGPT`);
 
 // start
 (async () => {
@@ -38,7 +40,7 @@ const {
       headless: false,
       executablePath: '/usr/bin/google-chrome-stable',
       userDataDir: FIREFOX_DATA_DIR,
-   //   slowMo: 1,
+      slowMo: 1,
       // NOTE: https://wiki.mozilla.org/Firefox/CommandLineOptions
       defaultViewport: { width: 1024, height: 768 * 2 },
       ignoreHTTPSErrors: true,

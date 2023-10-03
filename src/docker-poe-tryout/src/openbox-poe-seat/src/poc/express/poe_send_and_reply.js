@@ -17,7 +17,7 @@ const {
   clearChatHistory,
   clearModalBox,
   questionAndAnswer,
-} = require(`${UTILS_ROOT}/chatGPT`);
+} = require(`../../utils/chatGPT`);
 
 const port = 3000;
 
@@ -31,7 +31,7 @@ app.get('/test1', async (req, res) => {
     headless: false,
     executablePath: '/usr/bin/firefox',
     userDataDir: FIREFOX_DATA_DIR,
- //   slowMo: 1,
+    slowMo: 1,
     // NOTE: https://wiki.mozilla.org/Firefox/CommandLineOptions
     defaultViewport: { width: 1024, height: 768 },
     ignoreHTTPSErrors: true,

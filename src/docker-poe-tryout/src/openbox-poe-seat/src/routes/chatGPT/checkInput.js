@@ -4,7 +4,6 @@ const fs = require('fs'),
   path = require('path');
 const ERROR_LOG_DIR = `/logs/error/${path.basename(__filename).replace('.js', '')}`;
 
-
 // const { storeJson } = require('../../../utils/storeJson');
 const { myLogger } = require('../../utils/myLogger');
 const { calculateMD5 } = require('../../utils/calculateMD5');

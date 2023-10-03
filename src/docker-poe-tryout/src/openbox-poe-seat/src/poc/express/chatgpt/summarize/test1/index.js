@@ -6,7 +6,7 @@ require('dotenv').config();
 const { FIREFOX_DATA_DIR } = process.env;
 
 const { SRC_ROOT, UTILS_ROOT } = require('../../../../../config');
-const { newChat, appendChat } = require(`${UTILS_ROOT}/chatHistory`);
+const { newChat, appendChat } = require(`../../../../../utils/chatHistory`);
 
 const {
   helloworld,
@@ -15,7 +15,7 @@ const {
   clearModalBox,
   questionAndAnswer,
   checkLoginState,
-} = require(`${UTILS_ROOT}/chatGPT`);
+} = require(`../../../../../utils/chatGPT`);
 const { TASK_DESCRIPTION, helloworld_louis_paragraph } = require('../prompt');
 
 const port = 3000;
@@ -30,7 +30,7 @@ app.get('/chatgpt_summarize_helloworld', async (req, res) => {
     headless: false,
     executablePath: '/usr/bin/firefox',
     userDataDir: FIREFOX_DATA_DIR,
- //   slowMo: 1,
+    slowMo: 1,
     // NOTE: https://wiki.mozilla.org/Firefox/CommandLineOptions
     defaultViewport: { width: 1024, height: 768 },
     ignoreHTTPSErrors: true,
