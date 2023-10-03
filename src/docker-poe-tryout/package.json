@@ -1,0 +1,33 @@
+{
+  "name": "docker-poe-tryout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dc_rebuild": "cd src && ./dc_build.sh",
+    "dc_dev_update": "cd src && DOCKER_DEV=true ./scripts/dc_update.sh",
+    "dc_update": "cd src && ./scripts/dc_update.sh",
+    "dc_prod": "cd src && ./scripts/dc_dev.sh",
+    "dc_dev": "cd src && DOCKER_DEV=true ./scripts/dc_dev.sh",
+    "dc_log":"cd src && ./scripts/dc_log.sh",
+    "dc_gen":"cd src && ./scripts/dc_gen.sh",
+    "dc_debug":"cd src && ./scripts/dc_debug.sh",
+    "dc_restart":"cd src && ./scripts/dc_restart.sh",
+    "dc_test":"cd src && ./scripts/dc_test.sh",
+    "dc_redis_cli":"cd src && ./scripts/dc_redis_cli.sh",
+    "gU": "git add . && git commit -m\"update docker-poe-tryout,\"",
+    "update_readme": "github-markdown README.md > docs/index.html",
+    "tidy": "npx prettier --write **/*.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "javascript-state-machine": "^3.1.0",
+    "markdown-to-html": "^0.0.13"
+  },
+  "dependencies": {
+    "finity": "^0.5.4"
+  }
+}

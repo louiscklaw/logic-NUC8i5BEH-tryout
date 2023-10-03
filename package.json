@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dc_rebuild": "cd src && ./scripts/dc_build.sh",
+    "dc_prod": "cd src && ./scripts/dc_dev.sh",
+    "dc_gen":"cd src && ./scripts/dc_gen.sh",
     "gitUpdate": "git add . && git commit -m\"update logic-NUC8i5BEH,\""
   },
   "repository": {

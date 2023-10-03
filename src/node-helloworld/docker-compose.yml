@@ -1,0 +1,13 @@
+services:
+  node-helloworld:
+    image: 192.168.10.61:5000/node-helloworld
+    # build: ./node-helloworld
+    restart: always
+    user: 1000:1000
+    environment:
+      - HELLO=world
+    entrypoint: sleep infinity
+    volumes:
+      - ./node-helloworld/src:/app
+      - ./node-helloworld/volumes:/volumes
+    working_dir: /app

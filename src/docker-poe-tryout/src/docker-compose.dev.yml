@@ -1,0 +1,58 @@
+services:
+  # NOTE: bait skipped as always use dev.sh
+  # bait:
+  #   command: ./entry.sh
+
+  api-debug:
+    command: ./entry.sh
+
+  dbapi:
+    command: ./dev.sh
+
+  diff-handler:
+    entrypoint: ./dev.sh
+  jobsdb-scraper:
+    entrypoint: ./dev.sh
+  flow-handler:
+    entrypoint: ./dev.sh
+  jobsdb-link-extractor:
+    entrypoint: ./dev.sh
+  page-handler:
+    entrypoint: ./dev.sh
+  poe-scheduler-api:
+    entrypoint: ./dev.sh
+
+  # NOTE:
+  # openbox-poe-seat1:
+  # NOTE: configure here -> 
+  # supervisord -> 
+  # openbox-poe-seat/src/entry.sh
+
+
+  # static-share:
+  #   command: ./dev.sh
+  # changedetection:
+  #   command: ./dev.sh
+
+  # link-extractor-chrome:
+  #   command: ./dev.sh
+  # changedetection-chrome:
+  #   command: ./dev.sh
+  # changedetection-data:
+  #   command: ./dev.sh
+  # mongo-express:
+  #   command: ./dev.sh
+  # mongo:
+  #   command: ./dev.sh
+  # redis_data:
+  #   command: ./dev.sh
+  # redis:
+  #   command: ./dev.sh
+  # redisinsight_store:
+  #   command: ./dev.sh
+  # redisinsight:
+  #   command: ./dev.sh
+  # test:
+  #   command: ./dev.sh
+  # v2raya:
+  #   command: ./dev.sh

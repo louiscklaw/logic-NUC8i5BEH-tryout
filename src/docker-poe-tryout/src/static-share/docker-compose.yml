@@ -1,0 +1,22 @@
+services:
+  static-share:
+    # build: ./static-share
+    image: logickee/poe-tryout-static-share
+    volumes:
+      - ./static-share:/app
+      - ./volumes/static-share:/share
+    working_dir: /app
+    command: ./entry.sh
+    # command: sleep infinity
+    ports:
+      - 8080:8080
+    user: 1000:1000
+    restart: unless-stopped
+    env_file: ./.env
+
+    deploy:
+      resources:
+        limits:
+          cpus: "0.7"
+        reservations:
+          cpus: "0.01"

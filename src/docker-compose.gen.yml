@@ -1,0 +1,55 @@
+name: logic-nuc8i5beh
+services:
+  bait:
+    command:
+    - ./dev.sh
+    deploy:
+      resources:
+        limits:
+          cpus: "0.7"
+        reservations:
+          cpus: "0.01"
+    environment:
+      HELLO: WORLD
+      TZ: Asia/Hong_Kong
+    image: 192.168.10.61:5000/poe-tryout-bait
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 8080
+      published: "18089"
+      protocol: tcp
+    restart: unless-stopped
+    volumes:
+    - type: bind
+      source: /usr/share/zoneinfo/Asia/Hong_Kong
+      target: /etc/localtime
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: /home/logic/_workspace/logic-NUC8i5BEH-tryout/src/docker-poe-tryout/src/bait/src
+      target: /app
+      bind:
+        create_host_path: true
+    working_dir: /app
+  db:
+    environment:
+      MYSQL_DATABASE: monica
+      MYSQL_PASSWORD: secret
+      MYSQL_RANDOM_ROOT_PASSWORD: "true"
+      MYSQL_USER: usermonica
+    image: mysql
+    networks:
+      default: null
+    restart: unless-stopped
+    user: "1000"
+  whoami1:
+    image: traefik/whoami
+    networks:
+      default: null
+    restart: unless-stopped
+networks:
+  default:
+    name: logic-nuc8i5beh_default
